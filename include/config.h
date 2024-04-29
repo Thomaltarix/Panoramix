@@ -26,12 +26,12 @@ typedef struct s_config {
 } t_config;
 
 /**
- * @struct t_game
- * @brief Structure representing the game.
+ * @struct t_simulation
+ * @brief Structure representing the simulation.
  * @param config Pointer to the configuration parameters.
  * @param threads Array of pointers to the threads.
  */
-typedef struct s_game {
+typedef struct s_simulation {
     t_config *config;                      /* Pointer to the configuration parameters. */
     t_thread **threads;                   /* Array of pointers to the threads. */
-} t_game;
+} t_simulation;
