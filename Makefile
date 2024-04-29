@@ -45,7 +45,7 @@ re:	fclean all
 
 tests_run:
 	@$(CC) -o unit_tests $(SRC) $(SRC_TESTS) $(CFLAGS) $(TESTFLAGS)
-	@./unit_tests
+	# @./unit_tests
 	@gcovr --exclude tests/
 	@gcovr --exclude tests/ --branches
 

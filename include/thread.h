@@ -9,6 +9,7 @@
 
 #include <pthread.h>
 #include <semaphore.h>
+#include <stdbool.h>
 
 /**
  * @struct t_thread

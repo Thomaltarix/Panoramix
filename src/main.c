@@ -54,3 +54,12 @@ int main(int ac, char **av)
     destroy_simulation(&sim);
     return 0;
 }
+
+int main(int ac, char **av)
+{
+    if (handle_args(ac, av) == 84) {
+        display_help();
+        return 84;
+    }
+    return 0;
+}
