@@ -19,11 +19,10 @@ static void init_config(config_t *config, int *values)
 
 static int init_threads(simulation_t *sim)
 {
-    for (size_t i = 0; i < sim->config->villagers_nb + 1; i++) {
+    for (size_t i = 0; i < sim->config->villagers_nb + 2; i++) {
         sim->villagers[i] = malloc(sizeof(villager_t));
-        if (!sim->villagers[i]) {
+        if (!sim->villagers[i])
             return 84;
-        }
         sim->villagers[i]->id = i;
         sim->villagers[i]->is_druid = false;
         sim->villagers[i]->fights = 0;
