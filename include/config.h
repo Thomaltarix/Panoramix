@@ -10,6 +10,8 @@
 #include <stddef.h>
 #include "thread.h"
 
+#define NB_ARGS 4              /* Number of arguments. */
+
 /**
  * @struct t_config
  * @brief Structure representing the configuration parameters.
