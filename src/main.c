@@ -51,6 +51,10 @@ int main(int ac, char **av)
         display_help();
         return 84;
     }
+    if (run_simulation(&sim) == 84) {
+        destroy_simulation(&sim);
+        return 84;
+    }
     destroy_simulation(&sim);
     return 0;
 }
