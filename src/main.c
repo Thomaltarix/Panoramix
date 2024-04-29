@@ -6,8 +6,7 @@
 */
 
 #include "config.h"
-#include <stdlib.h>
-#include <unistd.h>
+#include "proto.h"
 
 static void display_help(void)
 {
@@ -20,28 +19,38 @@ static void display_help(void)
     write(1, "\tn4\tnumber of refills\n", 23);
 }
 
-static int handle_args(int ac, char **av)
+static int *handle_args(int ac, char **av)
 {
     int *args = NULL;
 
     if (ac != NB_ARGS + 1)
-        return 84;
+        return NULL;
     args = malloc(sizeof(int) * NB_ARGS);
     if (args == NULL)
-        return 84;
-    for (int i = 1; i < ac; i++) {
-        args[i] = atoi(av[i]);
-        if (args[i] <= 0)
-            return 84;
+        return NULL;
+    for (int i = 0; i < ac - 1; i++) {
+        args[i] = atoi(av[i + 1]);
+        if (args[i] <= 0) {
+            free(args);
+            return NULL;
+        }
     }
-    return 0;
+    return args;
 }
 
 int main(int ac, char **av)
 {
-    if (handle_args(ac, av) == 84) {
+    simulation_t sim;
+    int *values = handle_args(ac, av);
+
+    if (values == NULL) {
         display_help();
         return 84;
     }
+    if (init_simulation(&sim, values) == 84) {
+        display_help();
+        return 84;
+    }
+    destroy_simulation(&sim);
     return 0;
 }

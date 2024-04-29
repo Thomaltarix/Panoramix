@@ -7,8 +7,10 @@
 
 #pragma once
 
-#include <stddef.h>
 #include "thread.h"
+#include <stddef.h>
+#include <stdlib.h>
+#include <unistd.h>
 
 #define NB_ARGS 4              /* Number of arguments. */
 
@@ -36,4 +38,5 @@ typedef struct config_s {
 typedef struct simulation_s {
     config_t *config;            /* Pointer to the configuration parameters. */
     thread_t **threads;          /* Array of pointers to the threads. */
+    sync_data_t *sync_data;       /* Synchronization data. */
 } simulation_t;
