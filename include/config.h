@@ -8,9 +8,11 @@
 #pragma once
 
 #include "thread.h"
+
 #include <stddef.h>
 #include <stdlib.h>
 #include <unistd.h>
+#include <stdio.h>
 
 #define NB_ARGS 4              /* Number of arguments. */
 
@@ -19,12 +21,14 @@
  * @brief Structure representing the configuration parameters.
  * @param villagers_nb Number of villagers.
  * @param pot_size Size of the pot.
+ * @param current_pot_size Current size of the pot.
  * @param fight_nb Number of fights.
  * @param refill_nb Number of refills.
  */
 typedef struct config_s {
     size_t villagers_nb;         /* Number of villagers. */
     size_t pot_size;             /* Size of the pot. */
+    size_t current_pot_size;     /* Current size of the pot. */
     size_t fight_nb;             /* Number of fights. */
     size_t refill_nb;            /* Number of refills. */
 } config_t;
