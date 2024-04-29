@@ -18,12 +18,12 @@
  * @param fight_nb Number of fights.
  * @param refill_nb Number of refills.
  */
-typedef struct s_config {
-    size_t villagers_nb;                    /* Number of villagers. */
-    size_t pot_size;                        /* Size of the pot. */
-    size_t fight_nb;                        /* Number of fights. */
-    size_t refill_nb;                       /* Number of refills. */
-} t_config;
+typedef struct config_s {
+    size_t villagers_nb;         /* Number of villagers. */
+    size_t pot_size;             /* Size of the pot. */
+    size_t fight_nb;             /* Number of fights. */
+    size_t refill_nb;            /* Number of refills. */
+} config_t;
 
 /**
  * @struct t_simulation
@@ -31,7 +31,7 @@ typedef struct s_config {
  * @param config Pointer to the configuration parameters.
  * @param threads Array of pointers to the threads.
  */
-typedef struct s_simulation {
-    t_config *config;                      /* Pointer to the configuration parameters. */
-    t_thread **threads;                   /* Array of pointers to the threads. */
-} t_simulation;
+typedef struct simulation_s {
+    config_t *config;            /* Pointer to the configuration parameters. */
+    thread_t **threads;          /* Array of pointers to the threads. */
+} simulation_t;

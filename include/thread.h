@@ -17,11 +17,11 @@
  * @param id The villager ID.
  * @param is_druid Boolean indicating if the villager is the druid.
  */
-typedef struct s_thread {
-    pthread_t thread;                       /* The thread identifier. */
-    size_t id;                              /* The villager ID. */
-    bool is_druid;                          /* Boolean indicating if the villager is the druid. */
-} t_thread;
+typedef struct thread_s {
+    pthread_t thread;        /* The thread identifier. */
+    size_t id;               /* The villager ID. */
+    bool is_druid;           /* Boolean indicating if it's a druid. */
+} thread_t;
 
 /**
  * @struct t_sync_data
@@ -29,10 +29,10 @@ typedef struct s_thread {
  * @param semaphore The semaphore for synchronization.
  * @param mutex The mutex for synchronization.
  */
-typedef struct s_sync_data {
-    sem_t semaphore;                        /* Semaphore for synchronization. */
-    pthread_mutex_t mutex;                  /* Mutex for synchronization. */
-} t_sync_data;
+typedef struct sync_data_s {
+    sem_t semaphore;         /* Semaphore for synchronization. */
+    pthread_mutex_t mutex;   /* Mutex for synchronization. */
+} sync_data_t;
 
 /**
  * @struct t_thread_data
@@ -40,7 +40,7 @@ typedef struct s_sync_data {
  * @param thread Pointer to the thread object.
  * @param sync_data Pointer to the synchronization data object.
  */
-typedef struct s_thread_data {
-    t_thread *thread;                       /* Pointer to the thread object. */
-    t_sync_data *sync_data;                 /* Pointer to the synchronization data object. */
-} t_thread_data;
+typedef struct thread_data_s {
+    thread_t *thread;        /* Pointer to the thread object. */
+    sync_data_t *sync_data;  /* Pointer to the synchronization data object. */
+} thread_data_t;
