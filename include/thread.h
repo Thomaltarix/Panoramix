@@ -12,17 +12,18 @@
 #include <stdbool.h>
 
 /**
- * @struct t_thread
- * @brief Structure representing a thread.
+ * @struct villager_t
+ * @brief Structure representing a villager.
  * @param thread The thread identifier.
  * @param id The villager ID.
- * @param is_druid Boolean indicating if the villager is the druid.
+ * @param fights Number of fights.
  */
-typedef struct thread_s {
+typedef struct villager_s {
     pthread_t thread;        /* The thread identifier. */
     size_t id;               /* The villager ID. */
-    bool is_druid;           /* Boolean indicating if it's a druid. */
-} thread_t;
+    size_t fights;           /* Number of fights. */
+    bool is_druid;           /* True if the villager is the druid. */
+} villager_t;
 
 /**
  * @struct t_sync_data

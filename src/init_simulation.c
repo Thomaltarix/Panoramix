@@ -11,6 +11,7 @@ static void init_config(config_t *config, int *values)
 {
     config->villagers_nb = values[0];
     config->pot_size = values[1];
+    config->current_pot_size = values[1];
     config->fight_nb = values[2];
     config->refill_nb = values[3];
     free(values);
@@ -18,21 +19,17 @@ static void init_config(config_t *config, int *values)
 
 static int init_threads(simulation_t *sim)
 {
-    for (size_t i = 0; i < sim->config->villagers_nb; i++) {
-        sim->threads[i] = malloc(sizeof(thread_t));
-        if (!sim->threads[i]) {
+    for (size_t i = 0; i < sim->config->villagers_nb + 1; i++) {
+        sim->villagers[i] = malloc(sizeof(villager_t));
+        if (!sim->villagers[i]) {
             return 84;
         }
-        sim->threads[i]->id = i;
-        sim->threads[i]->is_druid = false;
+        sim->villagers[i]->id = i;
+        sim->villagers[i]->is_druid = false;
+        sim->villagers[i]->fights = 0;
     }
-    sim->threads[sim->config->villagers_nb] = malloc(sizeof(thread_t));
-    if (!sim->threads[sim->config->villagers_nb]) {
-        return 84;
-    }
-    sim->threads[sim->config->villagers_nb]->id = sim->config->villagers_nb;
-    sim->threads[sim->config->villagers_nb]->is_druid = true;
-    sim->threads[sim->config->villagers_nb + 1] = NULL;
+    sim->villagers[sim->config->villagers_nb]->is_druid = true;
+    sim->villagers[sim->config->villagers_nb + 1] = NULL;
     return 0;
 }
 
@@ -51,9 +48,9 @@ int init_simulation(simulation_t *sim, int *values)
     if (!sim->config)
         return 84;
     init_config(sim->config, values);
-    sim->threads =
-        malloc(sizeof(thread_t *) * (sim->config->villagers_nb + 2));
-    if (!sim->threads)
+    sim->villagers =
+        malloc(sizeof(villager_t *) * (sim->config->villagers_nb + 2));
+    if (!sim->villagers)
         return 84;
     if (init_threads(sim) == 84)
         return 84;
