@@ -37,6 +37,18 @@ typedef struct config_s {
  */
 typedef struct simulation_s {
     config_t *config;            /* Pointer to the configuration parameters. */
-    thread_t **threads;          /* Array of pointers to the threads. */
-    sync_data_t *sync_data;       /* Synchronization data. */
+    villager_t **villagers;        /* Array of pointers to the villagers. */
+    sync_data_t *sync_data;      /* Synchronization data. */
 } simulation_t;
+
+/**
+ * @struct t_thread_data
+ * @brief Structure representing the data associated with a thread.
+ * @param villager Pointer to the villager object.
+ * @param sync_data Pointer to the synchronization data object.
+ */
+typedef struct thread_data_s {
+    villager_t *villager;        /* Pointer to the thread object. */
+    sync_data_t *sync_data;  /* Pointer to the synchronization data object. */
+    config_t *config;        /* Pointer to the configuration object. */
+} thread_data_t;

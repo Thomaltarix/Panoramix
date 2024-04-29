@@ -34,14 +34,3 @@ typedef struct sync_data_s {
     sem_t semaphore;         /* Semaphore for synchronization. */
     pthread_mutex_t mutex;   /* Mutex for synchronization. */
 } sync_data_t;
-
-/**
- * @struct t_thread_data
- * @brief Structure representing the data associated with a thread.
- * @param thread Pointer to the thread object.
- * @param sync_data Pointer to the synchronization data object.
- */
-typedef struct thread_data_s {
-    thread_t *thread;        /* Pointer to the thread object. */
-    sync_data_t *sync_data;  /* Pointer to the synchronization data object. */
-} thread_data_t;
