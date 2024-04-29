@@ -5,7 +5,10 @@
 ** main
 */
 
-int main(void)
+#include "config.h"
+#include <stdlib.h>
+#include <unistd.h>
+
 static void display_help(void)
 {
     write(1, "USAGE\n", 6);
@@ -17,5 +20,28 @@ static void display_help(void)
     write(1, "\tn4\tnumber of refills\n", 23);
 }
 
+static int handle_args(int ac, char **av)
+{
+    int *args = NULL;
+
+    if (ac != NB_ARGS + 1)
+        return 84;
+    args = malloc(sizeof(int) * NB_ARGS);
+    if (args == NULL)
+        return 84;
+    for (int i = 1; i < ac; i++) {
+        args[i] = atoi(av[i]);
+        if (args[i] <= 0)
+            return 84;
+    }
+    return 0;
+}
+
+int main(int ac, char **av)
+{
+    if (handle_args(ac, av) == 84) {
+        display_help();
+        return 84;
+    }
     return 0;
 }
