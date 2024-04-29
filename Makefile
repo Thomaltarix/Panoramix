@@ -9,6 +9,9 @@
 SRC		=	src/main.c					\
 			src/init_simulation.c		\
 			src/destroy_simulation.c	\
+			src/run_simulation.c		\
+			src/villager.c				\
+			src/druid.c					\
 
 OBJ		=	$(SRC:.c=.o)
 
