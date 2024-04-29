@@ -6,7 +6,10 @@
 ##
 
 # Sources
-SRC		=	src/main.c
+SRC		=	src/main.c					\
+			src/init_simulation.c		\
+			src/destroy_simulation.c	\
+
 OBJ		=	$(SRC:.c=.o)
 
 # Tests
