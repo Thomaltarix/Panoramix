@@ -40,14 +40,11 @@ void *villager(void *data)
     while (thread_data->villager->fights < thread_data->config->fight_nb &&
         (thread_data->config->refill_nb > 0 ||
         thread_data->config->current_pot_size > 0)) {
-        sleep(1);
         pthread_mutex_lock(&thread_data->sync_data->mutex);
-        sleep(1);
         drink(thread_data);
-        sleep(1);
         pthread_mutex_unlock(&thread_data->sync_data->mutex);
-        sleep(1);
         fight(thread_data);
+        sleep(2);
     }
     printf("Villager %ld: I'm going to sleep now.\n",
         thread_data->villager->id);
